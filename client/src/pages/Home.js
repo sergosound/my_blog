@@ -1,7 +1,8 @@
 import React from 'react';
+import { PopupService } from '../services';
 
 const Home = () => {
-    console.log('render Home');
+    PopupService.show();
     return <div>Home page</div>;
 };
 
