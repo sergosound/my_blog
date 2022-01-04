@@ -25,8 +25,9 @@ const PopupProvider = ({ children }) => {
     const value = useMemo(() => {
         const context = { show, hide };
         PopupService.setContext(context);
+
         return context;
-    }, []);
+    }, [show, hide]);
 
     return (
         <Context.Provider value={value}>{children}</Context.Provider>

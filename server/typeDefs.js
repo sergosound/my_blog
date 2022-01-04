@@ -3,7 +3,7 @@ const { buildSchema } = require("graphql");
 const typeDefs = buildSchema(`
     type User {
         id: ID
-        username: String
+        name: String
         age: Int
         posts: [Post]
     }
@@ -15,7 +15,7 @@ const typeDefs = buildSchema(`
     
     input UserInput {
         id: ID
-        username: String!
+        name: String!
         age: Int!
         posts: [PostInput]
     }
@@ -26,16 +26,12 @@ const typeDefs = buildSchema(`
     }
     
     type Query {
-        getAllUsers: [User]
         getUser(id: ID): User
+        getAllUsers: [User]
     }
     
     type Mutation {
         createUser(input: UserInput): User
-    }
-    
-    type Subscription {
-        createUser(userId: ID): User
     }
 `);
 
