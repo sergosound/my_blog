@@ -1,23 +1,7 @@
-html, body {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+body {
+    background-color: #eceff1;
 }
-form {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-form input {
-    padding: 14px 22px;
-}
-.btns {
-    display: flex;
-    justify-content: center;
-}
-.btns button {
-    text-align: center;
-    padding: 14px 22px;
+
+nav, .page-footer {
+    background-color: #37474f;
 }
