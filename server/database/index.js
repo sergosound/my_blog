@@ -10,9 +10,11 @@ class DataBase {
     }
 
     getUser(id) {
-        return this.users.find(user => +user.id === id)
+        console.log('|| db gu')
+        return this.users.find(user => user.id == id)
     }
     getAllUsers() {
+        console.log('|| db fau')
         return this.users;
     }
     createUser(input) {

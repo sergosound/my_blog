@@ -10,6 +10,7 @@
     "apollo-link-ws": "^1.0.20",
     "enzyme": "^3.11.0",
     "graphql": "^15.6.1",
+    "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router-dom": "^6.2.1",
@@ -21,7 +22,9 @@
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "eslint": "eslint ./src",
+    "prepare": "cd .. && husky install ./client/husky"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +46,16 @@
   },
   "devDependencies": {
     "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
-    "jest": "^27.4.5"
+    "eslint": "^8.6.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "^7.28.0",
+    "husky": "^7.0.4",
+    "jest": "^27.4.5",
+    "lint-staged": "^12.1.7",
+    "prettier": "2.5.1"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
   }
 }

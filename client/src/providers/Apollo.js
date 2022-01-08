@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import { split, HttpLink } from '@apollo/client';
 import { getMainDefinition } from '@apollo/client/utilities';
@@ -29,5 +30,7 @@ const client = new ApolloClient({
 });
 
 const Provider = ({ children }) => <ApolloProvider client={client}>{children}</ApolloProvider>;
+
+Provider.propTypes = { children: PropTypes.node };
 
 export default Provider;

@@ -1,4 +1,5 @@
 import React, { createContext, useCallback, useMemo } from 'react';
+import PropTypes from 'prop-types';
 import { PopupService } from '../services';
 
 const defaultValue = {
@@ -32,6 +33,10 @@ const PopupProvider = ({ children }) => {
     return (
         <Context.Provider value={value}>{children}</Context.Provider>
     )
+};
+
+PopupProvider.propTypes = {
+    children: PropTypes.node,
 };
 
 export default PopupProvider;

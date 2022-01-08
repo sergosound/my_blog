@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Button = ({ small, large, disabled, flat, pulse, children }) => {
     const size = small && 'btn-small' || large && 'btn-large' || '';
@@ -11,6 +12,15 @@ const Button = ({ small, large, disabled, flat, pulse, children }) => {
             {children}
         </a>
     );
+};
+
+Button.propTypes = {
+    small: PropTypes.bool,
+    large: PropTypes.bool,
+    disabled: PropTypes.bool,
+    flat: PropTypes.bool,
+    pulse: PropTypes.bool,
+    children: PropTypes.node,
 };
 
 export default Button;
