@@ -52,10 +52,15 @@
     "husky": "^7.0.4",
     "jest": "^27.4.5",
     "lint-staged": "^12.1.7",
+    "pre-commit": "^1.2.2",
     "prettier": "2.5.1"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
+    "husky": "^7.0.4",
+    "jest": "^27.4.5",
+    "lint-staged": "^12.1.7",
+    "pre-commit": "^1.2.2",
     "*.{js,css,md}": "prettier --write"
   }
 }
