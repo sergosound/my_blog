@@ -18,7 +18,9 @@
     "express-graphql": "^0.12.0",
     "graphql": "^15.6.1",
     "graphql-subscriptions": "^1.2.1",
+    "mongoose": "^6.1.6",
     "nodemon": "^2.0.13",
+    "realm-web": "^1.5.1",
     "subscriptions-transport-ws": "^0.9.19"
   }
 }
