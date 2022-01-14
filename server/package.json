@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "mock": "cross-env NODE_ENV=mock nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,9 @@
     "nodemon": "^2.0.13",
     "realm-web": "^1.5.1",
     "subscriptions-transport-ws": "^0.9.19"
+  },
+  "devDependencies": {
+    "apollo-server": "^3.6.1",
+    "cross-env": "^7.0.3"
   }
 }

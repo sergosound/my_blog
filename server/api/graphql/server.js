@@ -1,17 +1,11 @@
 const { ApolloServer } = require("apollo-server-express");
-const { typeDefs, resolvers } = require("./schema");
 const { execute, subscribe } = require("graphql");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
-const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { graphqlHTTP } = require("express-graphql");
 const cors = require("cors");
 
-async function createApolloServer(app, httpServer) {
+async function createApolloServer({ schema, app, httpServer }) {
   let subscriptionServer;
-  const schema = makeExecutableSchema({
-    typeDefs,
-    resolvers,
-  });
 
   app.use(cors());
   app.use("/graphql", graphqlHTTP({ graphiql: true, schema }));
@@ -29,10 +23,7 @@ async function createApolloServer(app, httpServer) {
         },
       },
     ],
-    context: async ({ req, res }) => {
-      console.log("|| context ||", { req, res });
-      return { abs: 123 };
-    },
+    context: () => ({ abs: 123 }),
   });
 
   subscriptionServer = SubscriptionServer.create(
@@ -53,7 +44,12 @@ async function createApolloServer(app, httpServer) {
   await server.start();
   server.applyMiddleware({ app, url: "/api/graphql" });
 
-  return server;
+  /**
+   * We return a reference to`httpServer` instead of `server` because we need
+   * to listen `httpServer` and not `server`.
+   * Here `server` is the result `new ApolloServer(...)`.
+   */
+  return httpServer;
 }
 
 module.exports = createApolloServer;

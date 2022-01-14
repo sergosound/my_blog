@@ -1,16 +1,19 @@
 const express = require("express");
 const http = require("http");
-const createApolloServer = require("./api/graphql/server");
+const createServerWithEnv = require("./utils/createServerWithEnv");
+const { PORT } = require("./utils/constants");
 
-const PORT = process.env.PORT || 5000;
+const logger = () =>
+  console.log(`🚀 Server ready at http://localhost:${PORT}/graphql`);
 
 (async function startServer() {
   const app = express();
   const httpServer = http.createServer(app);
-  const apolloServer = await createApolloServer(app, httpServer);
 
-  const message = `🚀 Server ready at http://localhost:${PORT}${apolloServer.graphqlPath}`;
-  const logger = () => console.log(message);
-
-  httpServer.listen(PORT, logger);
+  try {
+    const server = await createServerWithEnv(app, httpServer);
+    await server.listen(logger);
+  } catch (error) {
+    console.log(new Error(error));
+  }
 })();
