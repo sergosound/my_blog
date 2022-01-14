@@ -2,7 +2,7 @@ const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { typeDefs, resolvers } = require("../api/graphql/schema");
 const createApolloServerWithExpress = require("../api/graphql/server");
 const createMockApolloServer = require("../mocks/server/apolloServer");
-const { IS_MOCK, IS_DEV } = require("./constants");
+const { IS_DEV, IS_MOCK } = require("./constants");
 
 const createServerWithEnv = async (app, httpServer) => {
   let server;

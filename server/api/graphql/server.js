@@ -49,7 +49,7 @@ async function createApolloServer({ schema, app, httpServer }) {
    * to listen `httpServer` and not `server`.
    * Here `server` is the result `new ApolloServer(...)`.
    */
-  return [httpServer, server];
+  return httpServer;
 }
 
 module.exports = createApolloServer;

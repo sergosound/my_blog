@@ -11,8 +11,8 @@ const logger = () =>
   const httpServer = http.createServer(app);
 
   try {
-    const [server, server2] = await createServerWithEnv(app, httpServer);
-    console.log({ httpServer: server, apolloServer: server2 });
+    const server = await createServerWithEnv(app, httpServer);
+    // console.log({ httpServer: server, apolloServer: server2 });
     await server.listen(logger);
   } catch (error) {
     console.log(new Error(error));
