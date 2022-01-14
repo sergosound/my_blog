@@ -12,7 +12,7 @@ const HomePage = () => {
   //     variables: { id: 1 },
   // });
 
-  // console.log('data2', data2);
+  console.log('data', { loading, error, data });
 
   useEffect(() => {
     if (!loading) {

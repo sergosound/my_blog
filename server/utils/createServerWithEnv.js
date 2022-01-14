@@ -1,26 +1,20 @@
-const { makeExecutableSchema } = require("@graphql-tools/schema");
-const { typeDefs, resolvers } = require("../api/graphql/schema");
 const createApolloServerWithExpress = require("../api/graphql/server");
-const createMockApolloServer = require("../mocks/server/apolloServer");
+const createMockApolloServer = require("../mocks/server");
 const { IS_DEV, IS_MOCK } = require("./constants");
 
 const createServerWithEnv = async (app, httpServer) => {
   let server;
-  const schema = makeExecutableSchema({
-    typeDefs,
-    resolvers,
-  });
 
   if (IS_MOCK) {
-    server = createMockApolloServer({ schema });
+    server = createMockApolloServer();
   }
 
   if (IS_DEV) {
-    server = await createApolloServerWithExpress({ schema, app, httpServer });
+    server = await createApolloServerWithExpress({ app, httpServer });
   }
 
   if (!server) {
-    throw "Server is not initialized";
+    throw new Error("Server is not initialized");
   }
 
   return server;

@@ -14,6 +14,6 @@ const logger = () =>
     const server = await createServerWithEnv(app, httpServer);
     await server.listen(PORT, logger);
   } catch (error) {
-    console.log(new Error(error));
+    console.log(error);
   }
 })();

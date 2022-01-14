@@ -1,16 +1,23 @@
+const { makeExecutableSchema } = require("@graphql-tools/schema");
 const { ApolloServer } = require("apollo-server-express");
 const { execute, subscribe } = require("graphql");
 const { SubscriptionServer } = require("subscriptions-transport-ws");
 const { graphqlHTTP } = require("express-graphql");
 const cors = require("cors");
+const { typeDefs, resolvers } = require("./schema");
 
-async function createApolloServer({ schema, app, httpServer }) {
+async function createApolloServer({ app, httpServer }) {
   let subscriptionServer;
+  const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers,
+  });
 
   app.use(cors());
   app.use("/graphql", graphqlHTTP({ graphiql: true, schema }));
 
   const server = new ApolloServer({
+    mocks: true,
     schema,
     plugins: [
       {
