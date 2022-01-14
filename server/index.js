@@ -12,8 +12,7 @@ const logger = () =>
 
   try {
     const server = await createServerWithEnv(app, httpServer);
-    // console.log({ httpServer: server, apolloServer: server2 });
-    await server.listen(logger);
+    await server.listen(PORT, logger);
   } catch (error) {
     console.log(new Error(error));
   }
