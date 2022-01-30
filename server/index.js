@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const createServerWithEnv = require("./utils/createServerWithEnv");
+const connectToDB = require("./utils/connectToDB");
 const { PORT } = require("./utils/constants");
 
 const logger = () =>
@@ -13,6 +14,7 @@ const logger = () =>
   try {
     const server = await createServerWithEnv(app, httpServer);
     await server.listen(PORT, logger);
+    await connectToDB();
   } catch (error) {
     console.log(error);
   }
